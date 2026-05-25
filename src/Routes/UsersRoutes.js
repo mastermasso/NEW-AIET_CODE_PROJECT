@@ -1,29 +1,48 @@
 const express = require('express');
 const router = express.Router();
 const users = require('../data/users.json');
-//const { use } = require('react');
+
 
 
 
 // In-memory tracking (for demo purposes)
 let currentLoggedInUser = null;
 
+router.get('/login',(req,res) =>{
+res.render("login");
+})
 // GET all users
-router.get('/', (req, res) => {
-  // Don't send passwords in production!
-  const safeUsers = users.map(user => ({
-    id: user.id,
-    name: user.name,
-    email: user.email
-  }));
-  
-  res.json({
-    success: true,
-    count: users.length,
-    users: safeUsers
-  });
-});
+router.post('/login', (req, res) => {
 
+  const { email, password }=req.body;
+  // Testing if fields are missing
+  if( !email && !password ){
+    res.status(400).json({ 
+     error: "Bad request",
+     message: "The request body is  missing one or more required fields: email, password" 
+    
+    });
+  }
+  console.log(email,password)
+  const founduser = users.find(user => user.email === email && user.password === password );
+
+  if(!founduser) {
+    return res.status(404).json ({
+      message: 'No user found in the local json file matching this email.'
+    });
+  }
+  if(founduser.role === "admin"){
+    res.json(users); 
+ }else if (founduser === "dev"){
+  console.log("You do not have permission to view")
+ } 
+
+    //  Proceed with logic if test passes
+  //   return res.status(200).json({
+  //     message: "return status matches successfully!",
+  //     receivedData: { email, password}
+  //  });
+   }); 
 // GET single user by ID
 router.get('/:id', (req, res) => {
   const userId = parseInt(req.params.id);
@@ -46,28 +65,6 @@ router.get('/:id', (req, res) => {
   });
 });
 
-// POST login route
-router.post('/login', (req, res) => {
-  const user = {"id":4,"name":"Master","email":"masso@gmail.com","password":"123"};
-
-  const email = req.body.email;
-  const password = req.body.password;
-   console.log(email,password);
-  if(user.email === email && user.password === password){
-    console.log('user is logged in') 
-  }
-  else {console.log('user is not found')}
-   
-
-//   var my_user = users.forEach(user =>{
-//   if(user.email === email && user.password === password){
-//   console.log(`user is logged in ${user.email}`);
-//     res.send(my_user);
-// }})
-
-console.log('issue')
-   
-});
 
 // POST logout route
 router.post('/logout', (req, res) => {
@@ -83,7 +80,7 @@ router.post('/logout', (req, res) => {
   
   res.json({
     success: true,
-    message: `Goodbye ${userName}! You have been logged out successfully`
+    message: `Goodbye ${userName}! You have been successfully logged out`
   });
 });
 

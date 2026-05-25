@@ -1,6 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
+router.get('/',(req,res)=>{
+res.redirect('home')
+})
+
 // Home route
 router.get('/home', (req, res) => {
   res.render('Home', { title: 'Home' });
@@ -21,6 +25,11 @@ router.get('/contact', (req, res) => {
 router.get('/services', (req, res) => {
   res.render('Services', { title: 'Our Services' });
 });
+
+router.get('/products', (req, res) => {
+  res.render('Products', { title: 'Our Services' });
+});
+
 
 module.exports = router;
 

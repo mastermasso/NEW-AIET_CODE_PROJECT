@@ -25,7 +25,7 @@ console.log(req.params.id);
 if(!product){
   console.log('product could not be found')
 }
-  res.json ({ message: `Get product ${req.params.id}:${product}`,
+  res.json ({ message: `Get product ${JSON.stringify(req.params.id)}:${JSON.stringify(product)}`,
   data:product});
 });
 
@@ -33,7 +33,7 @@ if(!product){
 router.post("/create_product",(req,res)=>{
   var myData = req.body;
   console.log(myData);
-  res.json({ message:"Create a new product"});
+  res.json({ message:"Create a new product",body:myData});
 });
 
 //Put/update a product
