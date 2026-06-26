@@ -1,0 +1,25 @@
+[
+  {
+    "invoiceId": 1,
+    "userId": 1,
+    "username": "Master",
+    "date": "2026-06-18",
+    "items": [
+      { "description": "Web hosting", "quantity": 1, "price": 50.0 },
+      { "description": "Support", "quantity": 2, "price": 25.0 }
+    ],
+    "total": 100.0,
+    "status": "paid"
+  },
+  {
+    "invoiceId": 2,
+    "userId": 2,
+    "username": "Gerald",
+    "date": "2026-06-18",
+    "items": [
+      { "description": "Development work", "quantity": 10, "price": 30.0 }
+    ],
+    "total": 300.0,
+    "status": "unpaid"
+  }
+]

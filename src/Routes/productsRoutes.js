@@ -10,7 +10,38 @@ router.use(express.json());
 // GET all products
 router.get('/', (req, res) => {
  
- // console.log(JSON.stringify({products}));
+// console.log(JSON.stringify({products}));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   res.json({ "message": "Get all products",

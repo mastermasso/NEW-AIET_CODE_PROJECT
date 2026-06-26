@@ -1,6 +1,5 @@
-
 [
-    {"id":1,"username":"Master","email":"masso@gmail.com","password":"master123", "role": "admin"},
-    {"id":2,"username":"Gerald","email":"kapurura@gmail.com","password":"gerald123", "role": "dev"},
-    {"id":3,"username":"Motheo","email":"marutla@gmail.com","password":"motheo123", "role":"dev"}                
+ {"id":1,"username":"Master","email":"masso@gmail.com","password":"master123", "role": "admin"},
+ {"id":2,"username":"Gerald","email":"kapurura@gmail.com","password":"gerald123", "role": "dev"},
+ {"id":3,"username":"Motheo","email":"marutla@gmail.com","password":"motheo123", "role":"dev"}                
 ]

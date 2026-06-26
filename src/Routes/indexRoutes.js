@@ -1,6 +1,18 @@
 const express = require('express');
 const router = express.Router();
 
+router.get('/example',function(req,res){
+  if(!req.session.count){
+    req.session.count = 0;
+  }
+  req.session.count++;
+ 
+  res.json({
+    "name":"Master",
+    "count":req.session.count
+  })
+})
+
 router.get('/',(req,res)=>{
 res.redirect('home')
 })
