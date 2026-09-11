@@ -5,7 +5,7 @@ const app = express();
 const PORT = 3000;
 const mysql = require('mysql2');
 // import MySQLStoreFactory from re;
-const MongoStore = require('express-mysql-session');
+
 
 //View engine
 app.set('view engine','ejs');
