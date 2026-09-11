@@ -3,7 +3,6 @@ const session = require('express-session')
 const path = require('path');
 const app = express();
 const PORT = 3000;
-const mongoose = require('mongoose');
 const mysql = require('mysql2');
 // import MySQLStoreFactory from re;
 const MongoStore = require('express-mysql-session');
@@ -17,25 +16,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Middleware to parse JSON bodies (for POST requests)
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
-
-const MongoStore = require('connect-mongo'); // Now this will be 'read'
-app.use(
-  session({
-    secret: 'keyboard cat',
-    resave: false,
-    saveUninitialized: true,
-    cookie: function (req) {
-      var match = req.url.match(/^\/([^/]+)/);
-      return {
-        path: match ? '/' + match[1] : '/',
-        httpOnly: true,
-        secure: req.secure || false,
-        maxAge: 60000 * 10
-      }
-    },
-  })
-);
-//routes
+utes
 const indexRoutes = require('./Routes/indexRoutes');
 const usersRoutes = require('./Routes/UsersRoutes');
 const productsRoutes = require('./Routes/productsRoutes');
